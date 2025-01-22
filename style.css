@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#sketch-container {
+    margin-bottom: 20px;
+}
+
+.controls {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    padding: 10px 30px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#startBtn {
+    background-color: #4CAF50;
+}
+
+#startBtn:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+#stopBtn {
+    background-color: #f44336;
+}
+
+#stopBtn:hover:not(:disabled) {
+    background-color: #da190b;
+}
+
+.parameters {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.param-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="number"] {
+    padding: 5px;
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+select {
+    padding: 5px;
+    width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+select:hover {
+    border-color: #999;
+}
+
+label {
+    font-size: 0.9em;
+    color: #333;
+}
