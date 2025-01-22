@@ -1,5 +1,6 @@
 let persons = [];
 let isRunning = false;
+let isPaused = false;
 let infectedCount = 1;
 let canvasWidth = 800;
 let canvasHeight = 600;
@@ -29,6 +30,7 @@ function setup() {
 
     // Event listeners
     document.getElementById('startBtn').addEventListener('click', startSimulation);
+    document.getElementById('pauseBtn').addEventListener('click', pauseSimulation);
     document.getElementById('stopBtn').addEventListener('click', stopSimulation);
     document.getElementById('totalPersons').addEventListener('change', resetSimulation);
 }
@@ -37,7 +39,7 @@ function draw() {
     background(255);
 
     // Update infection state
-    if (isRunning) {
+    if (isRunning && !isPaused) {
         const currentTime = millis();
         if (currentTime - lastUpdateTime >= 1000) { // Update every second
             const newInfectedCount = Math.min(
@@ -75,15 +77,31 @@ function draw() {
 
 function startSimulation() {
     isRunning = true;
+    isPaused = false;
     document.getElementById('startBtn').disabled = true;
+    document.getElementById('pauseBtn').disabled = false;
     document.getElementById('stopBtn').disabled = false;
+    document.getElementById('totalPersons').disabled = true;
+    document.getElementById('growthRate').disabled = true;
+    document.getElementById('orderedMode').disabled = true;
     lastUpdateTime = millis();
+}
+
+function pauseSimulation() {
+    isPaused = !isPaused;
+    document.getElementById('pauseBtn').textContent = isPaused ? 'Resume' : 'Pause';
 }
 
 function stopSimulation() {
     isRunning = false;
+    isPaused = false;
     document.getElementById('startBtn').disabled = false;
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('pauseBtn').textContent = 'Pause';
     document.getElementById('stopBtn').disabled = true;
+    document.getElementById('totalPersons').disabled = false;
+    document.getElementById('growthRate').disabled = false;
+    document.getElementById('orderedMode').disabled = false;
     resetSimulation();
 }
 
